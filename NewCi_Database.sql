@@ -78,7 +78,34 @@ ALTER TABLE Pelanggan
 			id_Kelurahan
 		)
 
+select * from Kecamatan
+select * from Kelurahan
+select * from Mesin_Cuci
+select * from Pelanggan
+select * from Pengguna
+select * from Transaksi
 
-SELECT * FROM Pengguna
-SELECT * FROM Transaksi
+
+--credential pengguna
+INSERT INTO Pengguna(TipePengguna, Username, [Password])
+VALUES ('Pemilik', 'Dodo', 'DodoGanteng');
+
+--bulk insert Kecamatan
+BULK INSERT Kecamatan
+FROM "C:\Users\johns\Documents\tugas kuliah\MIBD\Kecamatan_Bandung.csv"
+WITH (
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    FIRSTROW = 2
+)
+
+--bulk insert Kelurahan
+BULK INSERT Kelurahan
+FROM "C:\Users\johns\Documents\tugas kuliah\MIBD\Kelurahan_Bandung.csv"
+WITH (
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    FIRSTROW = 2
+)
+
 
