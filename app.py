@@ -3,6 +3,26 @@ import maskpass
 from prettytable import PrettyTable
 import datetime
 import math
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template
+
+# Inisialisasi aplikasi Flask
+app = Flask(__name__)
+
+# Rute untuk halaman utama
+@app.route("/")
+def home():
+    return "<h1>Selamat Datang di Aplikasi Flask!</h1><p>Ini adalah aplikasi web sederhana menggunakan Flask.</p>"
+
+# Rute untuk halaman lain
+@app.route("/about")
+def about():
+    return "<h1>Tentang Kami</h1><p>Ini adalah halaman tentang kami.</p>"
+
+# Jalankan aplikasi
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
 # Prompt user for credentials
 
