@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 id_Kelurahan,Nama,id_Kecamatan
 ,Cisaranten Endah,1
 ,Cisaranten Bina Harapan,1
@@ -88,4 +89,96 @@ id_Kelurahan,Nama,id_Kecamatan
 ,Merdeka,29
 ,Pasanggrahan,30
 ,Pasir Endah,30
+=======
+id_Kelurahan,Nama,id_Kecamatan
+,Cisaranten Endah,1
+,Cisaranten Bina Harapan,1
+,Sukamiskin,1
+,Antapani Kulon,2
+,Antapani Wetan,2
+,Antapani Tengah,2
+,Cisaranten Endah,3
+,Cisaranten Bina Harapan,3
+,Sukamiskin,3
+,Nyengseret,4
+,Karasak,4
+,Cibadak,4
+,Babakan,5
+,Sukahaji,5
+,Margahayu Utara,5
+,Mengger,6
+,Wates,6
+,Batununggal,6
+,Cijerah,7
+,Cigondewah Kidul,7
+,Caringin,7
+,Cihapit,8
+,Citarum,8
+,Tamansari,8
+,Kebonwaru,9
+,Samoja,9
+,Binong,9
+,Babakan Tarogong,10
+,Jamika,10
+,Suka Asih,10
+,Kebon Lega,11
+,Cibaduyut,11
+,Mekarwangi,11
+,Batununggal,12
+,Sekejati,12
+,Kujangsari,12
+,Cihaurgeulis,13
+,Cigadung,13
+,Neglasari,13
+,Sukamaju,14
+,Sukaluyu,14
+,Sadang Serang,14
+,Cibiru Hilir,15
+,Cipadung,15
+,Cipadung Wetan,15
+,Pasirkaliki,16
+,Arjuna,16
+,Pamoyanan,16
+,Hegarmanah,17
+,Ledeng,17
+,Ciumbuleuit,17
+,Pakemitan,18
+,Babakan Penghulu,18
+,Sukamulya,18
+,Lebak Siliwangi,19
+,Sadang Serang,19
+,Sekeloa,19
+,Rancabolang,20
+,Rancanumpang,20
+,Cisaranten Kidul,20
+,Kebon Jayanti,21
+,Babakan Sari,21
+,Binong,21
+,Malabar,22
+,Burangrang,22
+,Cijagra,22
+,Sindang Jaya,23
+,Karang Pamulang,23
+,Jatihandap,23
+,Cipadung Kidul,24
+,Cipadung Kulon,24
+,Cipadung Wetan,24
+,Derwati,25
+,Manjahlega,25
+,Mekarjaya,25
+,Ciateul,26
+,Balonggede,26
+,Ancol,26
+,Cipedes,27
+,Pasteur,27
+,Sukabungah,27
+,Gegerkalong,28
+,Isola,28
+,Sukarasa,28
+,Braga,29
+,Kebon Pisang,29
+,Merdeka,29
+,Pasanggrahan,30
+,Pasir Endah,30
+>>>>>>> ef24e1b3889393cf65c996b033354ffb1c9c6031
 ,Cigending,30
