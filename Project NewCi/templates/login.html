@@ -5,27 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 
 <body>
-    <div class="login-container">
-        <form action="/" method="POST" class="login-form">
-            <h2>Login</h2>
 
-            <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <body>
+        <header>
+            <div class="logo">
+                <h1>NewCi!</h1>
             </div>
+            <button onclick="window.location.href='/';" class="logout-btn"> Logout</button>
+        </header>
 
-            <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+        <main>
+            <div class="dashboard-container">
+                <div class="left-section">
+                    <img src="{{ url_for('static', filename='images/Wombat.png') }}" alt="User Avatar" class="avatar">
+                </div>
+                <div class="right-section">
+                    <h1>Selamat Datang di Laundry <span>NewCi!</span></h1>
+                    <div class="login">
+                        <form action="/" method="POST" class="login-form">
+                            <h2>Login</h2>
+
+                            <div class="input-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+
+                            <button type="submit" class="login-btn">Login</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </main>
 
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-    </div>
+
+    </body>
+    <footer>
+        <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+    </footer>
+
+
 </body>
 
 </html>
