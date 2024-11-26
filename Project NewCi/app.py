@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
 # Prompt user for credentials
 
-server = "AIR\SQLEXPRESS"
+server = "AIR\\SQLEXPRESS"
 database = "Manpro"
 
 # Define our connection string with username and password

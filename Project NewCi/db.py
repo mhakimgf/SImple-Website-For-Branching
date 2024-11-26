@@ -3,7 +3,7 @@
 import pyodbc
 
 def get_connection():
-    server = "LAPTOP-9Q8UL4FR\SQLEXPRESS"
+    server = "AIR\\SQLEXPRESS"
     database = "Manpro"
     connection = pyodbc.connect(
         f'DRIVER={{ODBC Driver 17 for SQL Server}};'
