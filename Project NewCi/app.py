@@ -33,7 +33,7 @@ def login():
 def dashboard():
     return render_template('dashboard.html')
 
-# Rute untuk halaman lain
+# Rute untuk halaman mesin cuci
 @app.route("/machines")
 def list_machines():
     connection = get_connection()
@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
 # Prompt user for credentials
 
-server = "LAPTOP-9Q8UL4FR\SQLEXPRESS"
+server = "AIR\SQLEXPRESS"
 database = "Manpro"
 
 # Define our connection string with username and password
