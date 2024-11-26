@@ -13,7 +13,7 @@
         <div class="logo">
             <h1>NewCi!</h1>
         </div>
-        <button onclick="window.location.href='/';" class="logout-btn"> Logout</button>
+        <button onclick="window.location.href='/home';" class="logout-btn"> Logout</button>
     </header>
 
     <main>
@@ -22,9 +22,9 @@
                 <img src="{{ url_for('static', filename='images/Wombat.png') }}" alt="User Avatar" class="avatar">
             </div>
             <div class="right-section">
-                <h1>Selamat Datang di Laundry <span>NewCi!</span></h1>
+                <h1>Selamat Datang Admin <span>NewCi!</span></h1>
                 <div class="menu">
-                    <button class="menu-item">
+                    <button class="menu-item" onclick="window.location.href='/tambah-pengguna';">
                         <img src="{{ url_for('static', filename='images/Mesin_Cuci.png') }}" alt="Tambah Mesin">
                         <p>Tambah Mesin Cuci</p>
                     </button>

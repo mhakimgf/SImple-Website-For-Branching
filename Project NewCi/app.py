@@ -20,11 +20,11 @@ trusted_connection = 'yes'
 app = Flask(__name__)
 
 # Rute untuk halaman utama
-@app.route("/")
+@app.route("/home")
 def home():
-    return render_template("login.html")
+    return render_template("dashboardbefore.html")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -100,8 +100,8 @@ if __name__ == "__main__":
 
 # Prompt user for credentials
 
-server = "AIR\SQLEXPRESS"
-database = "Manpro"
+server = "LAPTOP-5GNHDDSL\\SQLEXPRESS"
+database = "NewCi"
 
 # Define our connection string with username and password
 cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; \
