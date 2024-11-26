@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Washing Machines</title>
+</head>
+<body>
+    <h1>Available Washing Machines</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Capacity</th>
+                <th>Status</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in machines %}
+            <tr>
+                <td>{{ machine[0] }}</td>
+                <td>{{ machine[1] }}</td>
+                <td>{{ machine[2] }}</td>
+                <td>{{ machine[3] }}</td>
+                <td>{{ machine[4] }}</td>
+                <td>{{ machine[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

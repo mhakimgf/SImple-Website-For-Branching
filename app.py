@@ -5,6 +5,7 @@ import datetime
 import math
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask import Flask, render_template
+from db import get_connection
 
 # Inisialisasi aplikasi Flask
 app = Flask(__name__)
@@ -12,12 +13,34 @@ app = Flask(__name__)
 # Rute untuk halaman utama
 @app.route("/")
 def home():
-    return "<h1>Selamat Datang di Aplikasi Flask!</h1><p>Ini adalah aplikasi web sederhana menggunakan Flask.</p>"
+    return render_template("login.html")
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Validasi user (contoh validasi sederhana)
+        if username == "Dodo" and password == "dodoGanteng":
+            return redirect(url_for('dashboard'))  # Arahkan ke halaman dashboard setelah login sukses
+        else:
+            return "Login Failed! Please check your username and password."
+
+    return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 # Rute untuk halaman lain
-@app.route("/about")
-def about():
-    return "<h1>Tentang Kami</h1><p>Ini adalah halaman tentang kami.</p>"
+@app.route("/machines")
+def list_machines():
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM Mesin_Cuci")
+    machines = cursor.fetchall()
+    return render_template("machines.html", machines=machines)
 
 # Jalankan aplikasi
 if __name__ == "__main__":
