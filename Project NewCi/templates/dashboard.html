@@ -13,7 +13,7 @@
         <div class="logo">
             <h1>NewCi!</h1>
         </div>
-        <button onclick="window.location.href='/logout';" class="logout-btn"> Logout</button>
+        <button onclick="window.location.href='/';" class="logout-btn"> Logout</button>
     </header>
 
     <main>
@@ -24,11 +24,11 @@
             <div class="right-section">
                 <h1>Selamat Datang di Laundry <span>NewCi!</span></h1>
                 <div class="menu">
-                    <button class="menu-item" onclick="window.location.href = '/machines';">
+                    <button class="menu-item">
                         <img src="{{ url_for('static', filename='images/Mesin_Cuci.png') }}" alt="Tambah Mesin">
                         <p>Tambah Mesin Cuci</p>
                     </button>
-                    <button class="menu-item" onclick="window.location.href='/logout';">
+                    <button class="menu-item">
                         <img src="{{ url_for('static', filename='images/Bill.png') }}" alt="Buat Pesanan" id="card">
                         <p>Buat Pesanan</p>
                     </button>
@@ -36,7 +36,7 @@
                         <img src="{{ url_for('static', filename='images/Money.png') }}" alt="Pembayaran">
                         <p>Pembayaran</p>
                     </button>
-                    <button class="menu-item">
+                    <button class="menu-item" onclick="window.location.href = '/machines';">
                         <img src="{{ url_for('static', filename='images/List.png') }}" alt="Daftar Mesin">
                         <p>Daftar Mesin Cuci</p>
                     </button>
@@ -45,9 +45,10 @@
         </div>
     </main>
 
-    <footer>
-        <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
-    </footer>
+
 </body>
+<footer>
+    <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+</footer>
 
 </html>
