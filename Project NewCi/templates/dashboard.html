@@ -24,7 +24,7 @@
             <div class="right-section">
                 <h1>Selamat Datang di Laundry <span>NewCi!</span></h1>
                 <div class="menu">
-                    <button class="menu-item" onclick="window.location.href = '/machines';">
+                    <button class="menu-item" >
                         <img src="{{ url_for('static', filename='images/Mesin_Cuci.png') }}" alt="Tambah Mesin">
                         <p>Tambah Mesin Cuci</p>
                     </button>
@@ -36,7 +36,7 @@
                         <img src="{{ url_for('static', filename='images/Money.png') }}" alt="Pembayaran">
                         <p>Pembayaran</p>
                     </button>
-                    <button class="menu-item">
+                    <button class="menu-item" onclick="window.location.href = '/machines';">
                         <img src="{{ url_for('static', filename='images/List.png') }}" alt="Daftar Mesin">
                         <p>Daftar Mesin Cuci</p>
                     </button>
