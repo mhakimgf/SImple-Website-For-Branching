@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Transaksi</title>
 </head>
+
 <body>
     <h1>Form Transaksi</h1>
 
@@ -26,7 +28,7 @@
         <select id="id_kecamatan" name="id_kecamatan" onchange="this.form.submit()" required>
             <option value="">Pilih Kecamatan</option>
             {% for kecamatan in kecamatan_list %}
-                <option value="{{ kecamatan.id_kecamatan }}">{{ kecamatan.nama_kecamatan }}</option>
+            <option value="{{ kecamatan.id_kecamatan }}">{{ kecamatan.nama_kecamatan }}</option>
             {% endfor %}
         </select><br><br>
 
@@ -35,19 +37,22 @@
         <select id="id_kelurahan" name="id_kelurahan" required>
             <option value="">Pilih Kelurahan</option>
             {% for kelurahan in kelurahan_list %}
-                <option value="{{ kelurahan.id_kelurahan }}">{{ kelurahan.nama_kelurahan }}</option>
+            <option value="{{ kelurahan.id_kelurahan }}">{{ kelurahan.nama_kelurahan }}</option>
             {% endfor %}
         </select><br><br>
 
         <!-- Waktu Mulai Pinjam -->
         <label for="waktu_mulai_pinjam">Waktu Mulai Pinjam:</label>
-        <input type="text" id="waktu_mulai_pinjam" name="waktu_mulai_pinjam" value="{{ current_datetime }}" readonly><br><br>
+        <input type="text" id="waktu_mulai_pinjam" name="waktu_mulai_pinjam" value="{{ current_datetime }}"
+            readonly><br><br>
 
         <!-- Tanggal Transaksi -->
         <label for="tanggal_transaksi">Tanggal Transaksi:</label>
-        <input type="text" id="tanggal_transaksi" name="tanggal_transaksi" value="{{ current_datetime }}" readonly><br><br>
+        <input type="text" id="tanggal_transaksi" name="tanggal_transaksi" value="{{ current_datetime }}"
+            readonly><br><br>
 
         <button type="submit">Kirim</button>
     </form>
 </body>
+
 </html>
