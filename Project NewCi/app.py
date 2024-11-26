@@ -6,6 +6,7 @@ import math
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask import Flask, render_template
 from db import get_connection
+from flask_sqlalchemy import SQLAlchemy
 
 # Inisialisasi aplikasi Flask
 app = Flask(__name__)
@@ -22,12 +23,26 @@ def login():
         password = request.form['password']
         
         # Validasi user (contoh validasi sederhana)
-        if username == "Dodo" and password == "dodoGanteng":
+        if username == "Dodo" and password == "DodoGanteng":
             return redirect(url_for('dashboard'))  # Arahkan ke halaman dashboard setelah login sukses
         else:
             return "Login Failed! Please check your username and password."
 
     return render_template('login.html')
+
+
+@app.route('/tambah-pengguna', methods=['GET', 'POST'])
+def index():
+    kecamatan_list = Kecamatan.query.all()
+    kelurahan_list = Kelurahan.query.filter_by(id_kecamatan=request.form.get('id_kecamatan')).all() if request.method == 'POST' else []
+    
+    current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    return render_template('form_template.html', 
+                           kecamatan_list=kecamatan_list, 
+                           kelurahan_list=kelurahan_list,
+                           current_datetime=current_datetime)
+
 
 @app.route('/dashboard')
 def dashboard():
@@ -41,6 +56,27 @@ def list_machines():
     cursor.execute("SELECT * FROM Mesin_Cuci")
     machines = cursor.fetchall()
     return render_template("machines.html", machines=machines)
+
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    'mssql+pyodbc://AkunTubes:mibd04@LAPTOP-9Q8UL4FR\\SQLEXPRESS/manpro?'
+    'driver=ODBC+Driver+17+for+SQL+Server;trusted_connection=yes'
+)
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Kecamatan(db.Model):
+    __tablename__ = 'kecamatan'
+    id_kecamatan = db.Column(db.Integer, primary_key=True)
+    nama_kecamatan = db.Column(db.String(100))
+
+class Kelurahan(db.Model):
+    __tablename__ = 'kelurahan'
+    id_kelurahan = db.Column(db.Integer, primary_key=True)
+    nama_kelurahan = db.Column(db.String(100))
+    id_kecamatan = db.Column(db.Integer, db.ForeignKey('kecamatan.id_kecamatan'))
 
 # Jalankan aplikasi
 if __name__ == "__main__":
