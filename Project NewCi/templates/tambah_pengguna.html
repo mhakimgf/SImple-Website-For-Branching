@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Pengguna</title>
+
+    <!-- Add jQuery for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script>
+        // Function to handle the change event for Kecamatan dropdown
+        function fetchKelurahan() {
+            var idKecamatan = $("#id_kecamatan").val(); // Get selected Kecamatan
+
+            if (idKecamatan) {
+                // Make AJAX request to fetch Kelurahan
+                $.get("/get_kelurahan", { id_kecamatan: idKecamatan }, function(data) {
+                    // Empty the Kelurahan dropdown
+                    $("#id_kelurahan").empty();
+                    
+                    // Add a default "Pilih Kelurahan" option
+                    $("#id_kelurahan").append('<option value="">Pilih Kelurahan</option>');
+                    
+                    // Add each Kelurahan to the dropdown
+                    data.forEach(function(kelurahan) {
+                        $("#id_kelurahan").append('<option value="' + kelurahan.id_kelurahan + '">' + kelurahan.nama + '</option>');
+                    });
+                });
+            } else {
+                // If no Kecamatan selected, reset the Kelurahan dropdown
+                $("#id_kelurahan").empty().append('<option value="">Pilih Kelurahan</option>');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Form Tambah Pengguna</h1>
+
+    <form action="/tambah-pengguna" method="POST">
+        <!-- Username -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Nama -->
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <!-- Role -->
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="">Pilih Role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select><br><br>
+
+        <!-- Kecamatan Dropdown -->
+        <label for="id_kecamatan">Kecamatan:</label>
+        <select id="id_kecamatan" name="id_kecamatan" onchange="fetchKelurahan()" required>
+            <option value="">Pilih Kecamatan</option>
+            {% for kecamatan in kecamatan_list %}
+                <option value="{{ kecamatan.id_kecamatan }}">{{ kecamatan.nama }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- Kelurahan Dropdown -->
+        <label for="id_kelurahan">Kelurahan:</label>
+        <select id="id_kelurahan" name="id_kelurahan" required>
+            <option value="">Pilih Kelurahan</option>
+        </select><br><br>
+
+        <button type="submit">Tambah Pengguna</button>
+    </form>
+
+</body>
+
+</html>
