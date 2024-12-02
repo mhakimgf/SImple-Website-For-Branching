@@ -3,21 +3,16 @@ import maskpass
 from prettytable import PrettyTable
 import datetime
 import math
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, jsonify, render_template, request, redirect, url_for, session
 from flask import Flask, render_template
 from db import get_connection
-from flask_sqlalchemy import SQLAlchemy
 
-# Variabel untuk koneksi
-server = 'LAPTOP-9Q8UL4FR\\SQLEXPRESS'
-username = 'AkunTubes'
-password = 'mibd04'
-database = 'manpro'
-driver = 'ODBC Driver 17 for SQL Server'
-trusted_connection = 'yes'
-
-# Inisialisasi aplikasi Flask
+# # Inisialisasi aplikasi Flask
 app = Flask(__name__)
+
+
+cnxn = get_connection()
+
 
 # Rute untuk halaman utama
 @app.route("/home")
@@ -39,17 +34,71 @@ def login():
     return render_template('login.html')
 
 
+# Route to fetch kelurahan based on selected kecamatan
+@app.route('/get_kelurahan', methods=['GET'])
+def get_kelurahan():
+    id_kecamatan = request.args.get('id_kecamatan')
+    
+    if not id_kecamatan:
+        return jsonify([])  # Return empty list if no kecamatan selected
+    
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    # Query to fetch Kelurahan based on Kecamatan
+    cursor.execute('''
+        SELECT id_kelurahan, nama
+        FROM Kelurahan
+        WHERE id_kecamatan = ?
+    ''', (id_kecamatan,))
+    
+    kelurahan_list = cursor.fetchall()
+    
+    # Convert to list of dictionaries
+    kelurahan_data = [{"id_kelurahan": kelurahan.id_kelurahan, "nama": kelurahan.nama} for kelurahan in kelurahan_list]
+    
+    cursor.close()
+    connection.close()
+    
+    return jsonify(kelurahan_data)
+
+# Route to display form to add user
 @app.route('/tambah-pengguna', methods=['GET', 'POST'])
-def index():
-    kecamatan_list = Kecamatan.query.all()
-    kelurahan_list = Kelurahan.query.filter_by(id_kecamatan=request.form.get('id_kecamatan')).all() if request.method == 'POST' else []
+def tambah_pengguna():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        nama = request.form['nama']
+        role = request.form['role']
+        id_kecamatan = request.form['id_kecamatan']
+        id_kelurahan = request.form['id_kelurahan']
+
+        # Insert new user into the Pengguna table
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute('''
+            INSERT INTO Pengguna (Username, Password, Nama, Role, id_kecamatan, id_kelurahan)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (username, password, nama, role, id_kecamatan, id_kelurahan))
+        connection.commit()
+
+        # Close the cursor and connection
+        cursor.close()
+        connection.close()
+
+        # Redirect to dashboard after successful insertion
+        return redirect(url_for('dashboard'))
+
+    # Get list of kecamatan to display in the form
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute('SELECT id_kecamatan, nama FROM Kecamatan')
+    kecamatan_list = cursor.fetchall()
     
-    current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
-    return render_template('form_template.html', 
-                           kecamatan_list=kecamatan_list, 
-                           kelurahan_list=kelurahan_list,
-                           current_datetime=current_datetime)
+    cursor.close()
+    connection.close()
+
+    return render_template('tambah_pengguna.html', kecamatan_list=kecamatan_list)
 
 
 @app.route('/dashboard')
@@ -66,48 +115,10 @@ def list_machines():
     return render_template("machines.html", machines=machines)
 
 
-
-
-
-# Membuat SQLAlchemy database URI dari variabel-variabel di atas
-connection_string = (
-    f'mssql+pyodbc://{username}:{password}@{server}/{database}?'
-    f'driver={driver};trusted_connection={trusted_connection}'
-)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    connection_string
-)
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-class Kecamatan(db.Model):
-    __tablename__ = 'kecamatan'
-    id_kecamatan = db.Column(db.Integer, primary_key=True)
-    nama_kecamatan = db.Column(db.String(100))
-
-class Kelurahan(db.Model):
-    __tablename__ = 'kelurahan'
-    id_kelurahan = db.Column(db.Integer, primary_key=True)
-    nama_kelurahan = db.Column(db.String(100))
-    id_kecamatan = db.Column(db.Integer, db.ForeignKey('kecamatan.id_kecamatan'))
-
 # Jalankan aplikasi
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-# Prompt user for credentials
-
-server = "LAPTOP-5GNHDDSL\\SQLEXPRESS"
-database = "NewCi"
-
-# Define our connection string with username and password
-cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; \
-                        SERVER=' + server + '; \
-                        DATABASE=' + database + ';\
-                        Trusted_Connection=yes')
 
 # Method untuk cek mesin cuci yang ada
 def cek_mesincuci():
