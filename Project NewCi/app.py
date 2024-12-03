@@ -66,20 +66,24 @@ def get_kelurahan():
 @app.route('/tambah-pengguna', methods=['GET', 'POST'])
 def tambah_pengguna():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        nama = request.form['nama']
-        role = request.form['role']
+        # username = request.form['username']
+        # password = request.form['password']
+        # nama = request.form['nama']
+        # role = request.form['role']
         id_kecamatan = request.form['id_kecamatan']
+
+        nama = request.form['nama']
+        noHP = request.form['noHP']
+        email = request.form['email']
         id_kelurahan = request.form['id_kelurahan']
 
         # Insert new user into the Pengguna table
         connection = get_connection()
         cursor = connection.cursor()
         cursor.execute('''
-            INSERT INTO Pengguna (Username, Password, Nama, Role, id_kecamatan, id_kelurahan)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (username, password, nama, role, id_kecamatan, id_kelurahan))
+            INSERT INTO Pelanggan (nama, nohp, email, id_kelurahan)
+            VALUES (?, ?, ?, ?)
+        ''', (nama, noHP, email, id_kelurahan))
         connection.commit()
 
         # Close the cursor and connection
