@@ -118,6 +118,28 @@ def list_machines():
     machines = cursor.fetchall()
     return render_template("machines.html", machines=machines)
 
+@app.route('/add-machine', methods=['GET', 'POST'])
+def add_machine():
+    if request.method == 'POST':
+        nama = request.form['nama']
+        merk = request.form['merk']
+        kapasitas = request.form['kapasitas']
+        tarif = request.form['tarif']
+
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute('''
+            INSERT INTO Mesin_Cuci (Nama, Merk, Kapasitas, Status, Tarif)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (nama, merk, kapasitas, 0, tarif))
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return redirect(url_for('list_machines'))
+
+    return render_template('add_machine.html')
 
 # Jalankan aplikasi
 if __name__ == "__main__":
