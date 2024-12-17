@@ -112,10 +112,20 @@ def dashboard():
 # Rute untuk halaman mesin cuci
 @app.route("/machines")
 def list_machines():
+    # Connect to the database
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM Mesin_Cuci where Status = 0")
-    machines = cursor.fetchall()
+    cursor.execute("SELECT id_Mesin_Cuci, Nama, Merk, Kapasitas, Status, Tarif FROM Mesin_Cuci")
+    
+    # Fetch data and convert rows to dictionaries
+    columns = [column[0] for column in cursor.description]  # Get column names
+    machines = [dict(zip(columns, row)) for row in cursor.fetchall()]  # Convert rows to dicts
+
+    # Close connection
+    cursor.close()
+    connection.close()
+
+    # Render the template with the machines data
     return render_template("machines.html", machines=machines)
 
 @app.route('/add-machine', methods=['GET', 'POST'])
@@ -129,7 +139,7 @@ def add_machine():
         connection = get_connection()
         cursor = connection.cursor()
         cursor.execute('''
-            INSERT INTO Mesin_Cuci (Nama, Merk, Kapasitas, Status, Tarif)
+            INSERT INTO Mesin_Cuci (Nama, Merk, Kapasitas, [Status], Tarif)
             VALUES (?, ?, ?, ?, ?)
         ''', (nama, merk, kapasitas, 0, tarif))
         connection.commit()
@@ -143,7 +153,7 @@ def add_machine():
 
 # Jalankan aplikasi
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 # Method untuk cek mesin cuci yang ada
