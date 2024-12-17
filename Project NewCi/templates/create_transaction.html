@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Transaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create_transaction.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Transaction Management</h1>
+            <button class="back-btn" onclick="window.location.href='/dashboard';"> Back</button>
+        </div>
+        <button onclick="window.location.href='/logout';" class="logout-btn">Logout</button>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Create New Transaction</h1>
+            <form action="{{ url_for('create_transaction') }}" method="POST">
+                <div class="form-group">
+                    <label for="pelanggan_id">Nomor Telpon</label>
+                    <input type="number" id="pelanggan_id" name="pelanggan_id" required
+                        placeholder="Masukan nomor telpon pelanggan" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="start_time">Waktu Mulai</label>
+                    <input type="time" id="start_time" name="start_time" required class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="tanggal">Tanggal Transaksi</label>
+                    <input type="date" id="tanggal" name="tanggal" required class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="machine_id">Pilih Mesin</label>
+                    <select id="machine_id" name="machine_id" required class="form-control">
+                        <option value="" disabled selected>Pilih Mesin Cuci</option>
+                        {% for machine in unused_machines %}
+                        <option value="{{ machine.id_Mesin_Cuci }}">{{ machine.Nama }} - {{ machine.Merk }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Create Transaction</button>
+            </form>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+    </footer>
+</body>
+
+</html>

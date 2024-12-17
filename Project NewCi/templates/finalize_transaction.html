@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalize Transaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/finalize_transaction.css') }}">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Transaction Management</h1>
+            <button class="back-btn" onclick="window.location.href='/dashboard';"> Back</button>
+        </div>
+        <button onclick="window.location.href='/logout';" class="logout-btn">Logout</button>
+    </header>
+
+    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="notifications">
+        {% for category, message in messages %}
+        <div class="notification {{ category }}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="form-container">
+            <h1>Finalize Transaction</h1>
+            <form action="{{ url_for('finalize_transaction') }}" method="POST">
+                <div class="form-group">
+                    <label for="machine_id">Machine ID</label>
+                    <input type="number" id="machine_id" name="machine_id" required placeholder="Enter Machine ID"
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="end_time">End Time</label>
+                    <input type="time" id="end_time" name="end_time" required class="form-control">
+                </div>
+
+                <button type="submit" class="btn-submit">Finalize Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+    </footer>
+</body>
+
+</html>

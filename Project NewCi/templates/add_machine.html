@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Machine</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_Machine.css') }}">
 </head>
+
 <body>
+    <header>
+        <div class="logo">
+            <h1>NewCi</h1>
+            <button class="back-btn" onclick="window.location.href='/dashboard';"> Back</button>
+        </div>
+        <button onclick="window.location.href='/logout';" class="logout-btn"> Logout</button>
+    </header>
+
     <div class="container">
-        <h1>Add New Machine</h1>
-        <form action="{{ url_for('add_machine') }}" method="POST">
-            <div class="form-group">
-                <label for="nama">Machine Name</label>
-                <input type="text" id="nama" name="nama" required placeholder="Enter machine name" class="form-control">
-            </div>
+        <div class="form-container">
+            <h1>Add New Machine</h1>
+            <form action="{{ url_for('add_machine') }}" method="POST">
+                <div class="form-group">
+                    <label for="nama">Machine Name</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Enter machine name"
+                        class="form-control">
+                </div>
 
-            <div class="form-group">
-                <label for="merk">Brand</label>
-                <input type="text" id="merk" name="merk" required placeholder="Enter brand name" class="form-control">
-            </div>
+                <div class="form-group">
+                    <label for="merk">Brand</label>
+                    <input type="text" id="merk" name="merk" required placeholder="Enter brand name"
+                        class="form-control">
+                </div>
 
-            <div class="form-group">
-                <label for="kapasitas">Capacity</label>
-                <input type="number" id="kapasitas" name="kapasitas" required placeholder="Enter capacity" class="form-control">
-            </div>
+                <div class="form-group">
+                    <label for="kapasitas">Capacity</label>
+                    <input type="number" id="kapasitas" name="kapasitas" required placeholder="Enter capacity"
+                        class="form-control">
+                </div>
 
-            <div class="form-group">
-                <label for="tarif">Rate</label>
-                <input type="number" id="tarif" name="tarif" required placeholder="Enter rate" class="form-control">
-            </div>
+                <div class="form-group">
+                    <label for="tarif">Rate</label>
+                    <input type="number" id="tarif" name="tarif" required placeholder="Enter rate" class="form-control">
+                </div>
 
-            <button type="submit" class="btn-submit">Add Machine</button>
-        </form>
+                <button type="submit" class="btn-submit">Add Machine</button>
+            </form>
+        </div>
     </div>
+
+    <footer>
+        <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+    </footer>
 </body>
+
 </html>

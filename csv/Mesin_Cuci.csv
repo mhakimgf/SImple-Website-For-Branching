@@ -1,45 +1,23 @@
-<<<<<<< HEAD
-id_Mesin_Cuci,Nama,Merk,Kapasitas,[Status],Tarif
-,"Dodo Super Clean 4600",Wombat,11,0,10500
-,"Wombat Washer Flagship 4500",Kapi,8,0,8000
-,"Kapi WishWash 4800",Dodo,14,0,13000
-,"Dodo Washer Flagship 4200",Wombat,9,0,9700
-,"Wombat Super Clean 3800",Kapi,14,0,14800
-,"Kapi Super Clean 3800",Dodo,15,0,14500
-,"Dodo Washer Flagship 4200",Wombat,13,1,10250
-,"Wombat WishWash 3800",Kapi,15,1,14650
-,"Kapi Super Clean 4400",Dodo,8,1,7500
-,"Dodo WishWash 4000",Wombat,14,0,12000
-,"Wombat Washer Flagship 3800",Kapi,10,1,6000
-,"Kapi Super Clean 4600",Dodo,14,0,8000
-,"Dodo Washer Flagship 4900",Wombat,14,0,12000
-,"Wombat WishWash 4100",Kapi,11,0,7000
-,"Kapi Super Clean 4000",Dodo,11,0,10500
-,"Dodo Washer Flagship 4100",Wombat,10,0,5500
-,"Wombat Super Clean 4200",Kapi,11,1,13500
-,"Kapi Washer Flagship 3700",Dodo,14,0,10000
-,"Dodo WishWash 4600",Wombat,10,0,6500
-,"Wombat Washer Flagship 4400",Kapi,13,1,13000
-=======
-id_Mesin_Cuci,Nama,Merk,Kapasitas,[Status],Tarif
-,"Dodo Super Clean 4600",Wombat,11,0,10500
-,"Wombat Washer Flagship 4500",Kapi,8,0,8000
-,"Kapi WishWash 4800",Dodo,14,0,13000
-,"Dodo Washer Flagship 4200",Wombat,9,0,9700
-,"Wombat Super Clean 3800",Kapi,14,0,14800
-,"Kapi Super Clean 3800",Dodo,15,0,14500
-,"Dodo Washer Flagship 4200",Wombat,13,1,10250
-,"Wombat WishWash 3800",Kapi,15,1,14650
-,"Kapi Super Clean 4400",Dodo,8,1,7500
-,"Dodo WishWash 4000",Wombat,14,0,12000
-,"Wombat Washer Flagship 3800",Kapi,10,1,6000
-,"Kapi Super Clean 4600",Dodo,14,0,8000
-,"Dodo Washer Flagship 4900",Wombat,14,0,12000
-,"Wombat WishWash 4100",Kapi,11,0,7000
-,"Kapi Super Clean 4000",Dodo,11,0,10500
-,"Dodo Washer Flagship 4100",Wombat,10,0,5500
-,"Wombat Super Clean 4200",Kapi,11,1,13500
-,"Kapi Washer Flagship 3700",Dodo,14,0,10000
-,"Dodo WishWash 4600",Wombat,10,0,6500
-,"Wombat Washer Flagship 4400",Kapi,13,1,13000
->>>>>>> ef24e1b3889393cf65c996b033354ffb1c9c6031
+﻿1;"""Dodo Super Clean 4600""";Wombat;11;1;10500
+2;"""Wombat Washer Flagship 4500""";Kapi;8;0;8000
+3;"""Kapi WishWash 4800""";Dodo;14;0;13000
+4;"""Dodo Washer Flagship 4200""";Wombat;9;0;9700
+5;"""Wombat Super Clean 3800""";Kapi;14;0;14800
+6;"""Kapi Super Clean 3800""";Dodo;15;0;14500
+7;"""Dodo Washer Flagship 4200""";Wombat;13;1;10250
+8;"""Wombat WishWash 3800""";Kapi;15;1;14650
+9;"""Kapi Super Clean 4400""";Dodo;8;1;7500
+10;"""Dodo WishWash 4000""";Wombat;14;1;12000
+11;"""Wombat Washer Flagship 3800""";Kapi;10;1;6000
+12;"""Kapi Super Clean 4600""";Dodo;14;0;8000
+13;"""Dodo Washer Flagship 4900""";Wombat;14;0;12000
+14;"""Wombat WishWash 4100""";Kapi;11;1;7000
+15;"""Kapi Super Clean 4000""";Dodo;11;1;10500
+16;"""Dodo Washer Flagship 4100""";Wombat;10;0;5500
+17;"""Wombat Super Clean 4200""";Kapi;11;1;13500
+18;"""Kapi Washer Flagship 3700""";Dodo;14;0;10000
+19;"""Dodo WishWash 4600""";Wombat;10;0;6500
+20;"""Wombat Washer Flagship 4400""";Kapi;13;1;13000
+21;WomWash Flagship V2;WomWash;45;0;15000
+22;Dodo Wash 2000;Dodo;25;0;7000
+23;Vombatukam 5000;Vombatus;35;0;3000
