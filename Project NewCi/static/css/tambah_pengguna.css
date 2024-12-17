@@ -1,0 +1,119 @@
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    /* Light grey background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+    color: #2a7bff;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logout-btn,
+.back-btn {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #2a7bff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #1a5bb8;
+}
+
+/* Main Container */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2a7bff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2a7bff;
+    outline: none;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2a7bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background-color: #1a5bb8;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #07148b;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 40px;
+}

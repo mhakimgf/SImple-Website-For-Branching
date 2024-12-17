@@ -15,15 +15,15 @@
 
             if (idKecamatan) {
                 // Make AJAX request to fetch Kelurahan
-                $.get("/get_kelurahan", { id_kecamatan: idKecamatan }, function(data) {
+                $.get("/get_kelurahan", { id_kecamatan: idKecamatan }, function (data) {
                     // Empty the Kelurahan dropdown
                     $("#id_kelurahan").empty();
-                    
+
                     // Add a default "Pilih Kelurahan" option
                     $("#id_kelurahan").append('<option value="">Pilih Kelurahan</option>');
-                    
+
                     // Add each Kelurahan to the dropdown
-                    data.forEach(function(kelurahan) {
+                    data.forEach(function (kelurahan) {
                         $("#id_kelurahan").append('<option value="' + kelurahan.id_kelurahan + '">' + kelurahan.nama + '</option>');
                     });
                 });
@@ -33,40 +33,72 @@
             }
         }
     </script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tambah_pengguna.css') }}">
 </head>
 
 <body>
-    <h1>Form Tambah Pengguna</h1>
+    <header>
+        <div class="logo">
+            <h1>NewCi!</h1>
+            <button class="back-btn" onclick="window.location.href='/dashboard';"> Back</button>
+        </div>
+        <button onclick="window.location.href='/logout';" class="logout-btn">Logout</button>
+    </header>
 
-    <form action="/tambah-pengguna" method="POST">
-        <!-- Username -->
-        <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" required><br><br>
-        <!-- NoHP -->
-        <label for="noHP">Nomor HP:</label>
-        <input type="text" id="noHP" name="noHP" required><br><br>
-        <!-- Email -->
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    <main>
+        <div class="form-container">
+            <h1>Form Tambah Pengguna</h1>
 
-        <!-- Kecamatan Dropdown -->
-        <label for="id_kecamatan">Kecamatan:</label>
-        <select id="id_kecamatan" name="id_kecamatan" onchange="fetchKelurahan()" required>
-            <option value="">Pilih Kecamatan</option>
-            {% for kecamatan in kecamatan_list %}
-                <option value="{{ kecamatan.id_kecamatan }}">{{ kecamatan.nama }}</option>
-            {% endfor %}
-        </select><br><br>
+            <form action="/tambah-pengguna" method="POST">
+                <!-- Nama -->
+                <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama pengguna"
+                        class="form-control">
+                </div>
 
-        <!-- Kelurahan Dropdown -->
-        <label for="id_kelurahan">Kelurahan:</label>
-        <select id="id_kelurahan" name="id_kelurahan" required>
-            <option value="">Pilih Kelurahan</option>
-        </select><br><br>
+                <!-- NoHP -->
+                <div class="form-group">
+                    <label for="noHP">Nomor HP:</label>
+                    <input type="text" id="noHP" name="noHP" required placeholder="Masukkan nomor HP"
+                        class="form-control">
+                </div>
 
-        <button type="submit">Tambah Pengguna</button>
-    </form>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Masukkan email"
+                        class="form-control">
+                </div>
 
+                <!-- Kecamatan Dropdown -->
+                <div class="form-group">
+                    <label for="id_kecamatan">Kecamatan:</label>
+                    <select id="id_kecamatan" name="id_kecamatan" onchange="fetchKelurahan()" required
+                        class="form-control">
+                        <option value="">Pilih Kecamatan</option>
+                        {% for kecamatan in kecamatan_list %}
+                        <option value="{{ kecamatan.id_kecamatan }}">{{ kecamatan.nama }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Kelurahan Dropdown -->
+                <div class="form-group">
+                    <label for="id_kelurahan">Kelurahan:</label>
+                    <select id="id_kelurahan" name="id_kelurahan" required class="form-control">
+                        <option value="">Pilih Kelurahan</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Tambah Pengguna</button>
+            </form>
+        </div>
+    </main>
 </body>
+<footer>
+    <p>Cuci di laundry NewCi! Buat pakaianmu seperti New!</p>
+</footer>
 
 </html>
